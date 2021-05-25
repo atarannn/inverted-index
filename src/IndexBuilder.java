@@ -1,6 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.Scanner;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.regex.Pattern;
@@ -37,8 +37,8 @@ public class IndexBuilder extends Thread {
     }
 
     @Override
-    public void run(){
-        for (var file : files){
+    public void run() {
+        for (var file : files) {
             indexFile(file);
         }
     }
