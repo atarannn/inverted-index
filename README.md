@@ -2,7 +2,7 @@
 **Client-server program for building an inverted index and for using it.**
 ____
 ## Building 
-To start the project, you must  **install the latest version** of Intellij IDEA.
+To start the project, you must  **install the latest version** of **Intellij IDEA**.
 > [links](https://www.jetbrains.com/idea/) to install Intellij IDEA
 
 ### Get a project from version control
