@@ -14,8 +14,7 @@ To start the project, you must  **install the latest version** of Intellij IDEA.
 5. click **Clone**, then click **Yes** in the confirmation dialog;
 6. as a result you will have a cloned project.
 
-### Add the following build configuration
-After cloning a project to the Intellij IDEA you need to add build configurations.
+### After cloning a project to the Intellij IDEA you need to add build configurations.
 ____
 ## Features of the project
     The main feature of this project is that you can index files.

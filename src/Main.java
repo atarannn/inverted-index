@@ -7,6 +7,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class Main {
     public static void main(String[] args) {
 
+
+
         var dataSet = new File("/Users/anastasia_tarannn/Downloads/datasets/1000/");
         var maxTreadsCount = 8;
         ConcurrentHashMap<String, ConcurrentLinkedQueue<WordLocation>> index = null;
