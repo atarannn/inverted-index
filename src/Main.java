@@ -5,14 +5,14 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Main {
+
     public static void main(String[] args) {
-
-
-
         var dataSet = new File("/Users/anastasia_tarannn/Downloads/datasets/1000/");
         var maxTreadsCount = 8;
+
         ConcurrentHashMap<String, ConcurrentLinkedQueue<WordLocation>> index = null;
         HashMap<Integer, Long> times = new HashMap<>();
+
         for (var threadsCount = 1; threadsCount <= maxTreadsCount; threadsCount++) {
             long start = System.nanoTime();
             index = buildIndex(dataSet, threadsCount);
@@ -20,18 +20,26 @@ public class Main {
         }
 
         System.out.println(times);
-        System.out.println("Index is built\nStarting server...");
+        System.out.println("Index is built \nStarting server...");
+
         new Server(index);
     }
 
-    public static ConcurrentHashMap<String, ConcurrentLinkedQueue<WordLocation>>
-    buildIndex(File dataSet, int threadsCount) {
+    /**
+     * building index
+     *
+     * @param dataSet path to folder with data
+     * @param threadsCount number of threads
+     * @return built index
+     */
+    public static ConcurrentHashMap<String, ConcurrentLinkedQueue<WordLocation>> buildIndex(File dataSet, int threadsCount) {
         var files = dataSet.listFiles();
-
         var index = new ConcurrentHashMap<String, ConcurrentLinkedQueue<WordLocation>>();
+
         if (files != null) {
             var threads = new Thread[threadsCount];
             var partLen = files.length / threadsCount;
+
             for (var i = 0; i < threadsCount; i++) {
                 File[] threadFiles;
                 if (i != threadsCount - 1) {
@@ -42,6 +50,7 @@ public class Main {
                     threadFiles = files;
                 }
                 var thread = new IndexBuilder(index, threadFiles);
+
                 thread.start();
                 threads[i] = thread;
             }
@@ -52,7 +61,6 @@ public class Main {
             } catch (InterruptedException ignored) {
 
             }
-
         }
 
         return index;
